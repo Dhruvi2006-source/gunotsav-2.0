@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>શાળાની માહિતી — ગુણોત્સવ 2.0</title>
+<link rel="stylesheet" href="/css/global.css">
+<link rel="stylesheet" href="/css/components.css">
+<link rel="stylesheet" href="/css/pages/school.css">
+</head>
+<body>
+<header class="noPrint">
+  <div class="header-top">
+    <div>
+      <h1>ગુણોત્સવ 2.0 — આધાર પુરાવા અને અહેવાલ વ્યવસ્થાપન</h1>
+      <div class="sub">શાળાની મૂળ માહિતી અને કલેક્શન સેટિંગ્સ</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button class="config-btn">⚙️ શાળાની માહિતી બદલો</button>
+    </div>
+  </div>
+  <div class="schoolbar">
+    <span class="pill" id="schoolName"></span>
+    <span class="pill" id="udise"></span>
+    <span class="pill" id="year"></span>
+    <span class="pill" id="location"></span>
+    <span class="pill" id="principal"></span>
+    <span class="autosave-pill" id="autoSaveStatus">⚡ કનેક્ટેડ</span>
+  </div>
+</header>
+
+<main>
+  <div class="school-card">
+    <h3>🏫 શાળાની માહિતી અપડેટ કરો</h3>
+    <div class="school-form-grid">
+      <div class="form-group">
+        <label>શાળાનું નામ:</label>
+        <input type="text" id="mName">
+      </div>
+      <div class="form-group">
+        <label>UDISE કોડ:</label>
+        <input type="text" id="mUdise">
+      </div>
+      <div class="form-group">
+        <label>શૈક્ષણિક વર્ષ:</label>
+        <input type="text" id="mYear">
+      </div>
+      <div class="form-group">
+        <label>ગામ:</label>
+        <input type="text" id="mVillage">
+      </div>
+      <div class="form-group">
+        <label>તાલુકો:</label>
+        <input type="text" id="mTaluka">
+      </div>
+      <div class="form-group">
+        <label>જિલ્લો:</label>
+        <input type="text" id="mDistrict">
+      </div>
+      <div class="form-group">
+        <label>આચાર્યનું નામ:</label>
+        <input type="text" id="mPrincipal">
+      </div>
+      <div class="form-group">
+        <label>મોબાઈલ નંબર:</label>
+        <input type="text" id="mMobile">
+      </div>
+    </div>
+
+    <div class="progress noPrint" style="margin-bottom: 12px;"><div id="bar"></div></div>
+    <div class="small noPrint" id="status" style="margin-bottom: 15px; font-weight: bold;"></div>
+
+    <div class="school-actions">
+      <button class="btn danger" onclick="resetAllDataConfirm()">🔄 મૂળ ડેટા રીસેટ કરો</button>
+      <div style="display:flex; gap:8px;">
+        <button class="btn secondary" onclick="location.href='/index.html'">રદ કરો</button>
+        <button class="btn green" onclick="saveSchoolInfo()">સેવ કરો</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Config Scripts -->
+<script src="/js/config.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/navigation.js"></script>
+<script src="/js/pages/school.js"></script>
+</body>
+</html>

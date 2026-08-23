@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>અહેવાલોનો સારાંશ — ગુણોત્સવ 2.0</title>
+<link rel="stylesheet" href="/css/global.css">
+<link rel="stylesheet" href="/css/components.css">
+<link rel="stylesheet" href="/css/pages/reports.css">
+</head>
+<body>
+<header class="noPrint">
+  <div class="header-top">
+    <div>
+      <h1>ગુણોત્સવ 2.0 — આધાર પુરાવા અને અહેવાલ વ્યવસ્થાપન</h1>
+      <div class="sub">શાળાના તમામ ૭૪ મુદ્દાઓ માટે એકત્રિત સમીક્ષા અહેવાલ પત્રક</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button class="config-btn">⚙️ શાળાની માહિતી બદલો</button>
+    </div>
+  </div>
+  <div class="schoolbar">
+    <span class="pill" id="schoolName"></span>
+    <span class="pill" id="udise"></span>
+    <span class="pill" id="year"></span>
+    <span class="pill" id="location"></span>
+    <span class="pill" id="principal"></span>
+    <span class="autosave-pill" id="autoSaveStatus">⚡ કનેક્ટેડ</span>
+  </div>
+</header>
+
+<main>
+  <div class="toolbar noPrint">
+    <button class="btn green" onclick="window.print()">🖨️ પ્રિન્ટ / PDF ડાઉનલોડ</button>
+    <button class="btn secondary" onclick="location.href='/index.html'">⬅️ ડેશબોર્ડ પર પાછા જાઓ</button>
+  </div>
+
+  <div class="card">
+    <div class="print-header" id="printHeader"></div>
+    <h2 class="noPrint" style="color: var(--primary); border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-top: 0;">📝 તમામ અહેવાલોનો એકત્રિત સારાંશ</h2>
+    
+    <div class="report-list-container" id="reportsContainer">
+      <div style="text-align: center; padding: 40px; color: var(--muted);">અહેવાલો લોડ થઈ રહ્યા છે...</div>
+    </div>
+  </div>
+</main>
+
+<!-- Config Scripts -->
+<script src="/js/config.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/navigation.js"></script>
+<script src="/js/pages/reports.js"></script>
+</body>
+</html>

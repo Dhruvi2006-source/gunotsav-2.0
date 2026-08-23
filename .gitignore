@@ -1,0 +1,105 @@
+# ================================
+# Dependencies
+# ================================
+node_modules/
+.pnpm-store/
+.npm/
+.yarn/
+.yarn-cache/
+
+# ================================
+# Environment variables / Secrets
+# ================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Keep the example environment file
+!.env.example
+
+# ================================
+# Logs
+# ================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# ================================
+# OS generated files
+# ================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ================================
+# IDE / Editors
+# ================================
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+.idea/
+*.swp
+*.swo
+
+# ================================
+# Build / Deployment
+# ================================
+dist/
+build/
+.vercel/
+.next/
+out/
+
+# ================================
+# Temporary files
+# ================================
+tmp/
+temp/
+.cache/
+coverage/
+
+# ================================
+# Local database / uploaded files
+# ================================
+uploads/
+storage/
+data/
+*.sqlite
+*.sqlite3
+*.db
+
+# ================================
+# Private certificates / keys
+# ================================
+*.pem
+*.key
+*.crt
+
+# ================================
+# Backup files
+# ================================
+*.bak
+*.backup
+*.old
+
+# ================================
+# Local development files
+# ================================
+*.local
+
+# ================================
+# Large media files accidentally added
+# ================================
+*.mp4
+*.mov
+*.avi

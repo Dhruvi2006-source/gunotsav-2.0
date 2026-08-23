@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>અપલોડ કરેલ દસ્તાવેજો — ગુણોત્સવ 2.0</title>
+<link rel="stylesheet" href="/css/global.css">
+<link rel="stylesheet" href="/css/components.css">
+<link rel="stylesheet" href="/css/pages/documents.css">
+</head>
+<body>
+<header class="noPrint">
+  <div class="header-top">
+    <div>
+      <h1>ગુણોત્સવ 2.0 — આધાર પુરાવા અને અહેવાલ વ્યવસ્થાપન</h1>
+      <div class="sub">શાળાના તમામ પુરાવા અને બિડાણ દસ્તાવેજોની લાઈબ્રેરી</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button class="config-btn">⚙️ શાળાની માહિતી બદલો</button>
+    </div>
+  </div>
+  <div class="schoolbar">
+    <span class="pill" id="schoolName"></span>
+    <span class="pill" id="udise"></span>
+    <span class="pill" id="year"></span>
+    <span class="pill" id="location"></span>
+    <span class="pill" id="principal"></span>
+    <span class="autosave-pill" id="autoSaveStatus">⚡ કનેક્ટેડ</span>
+  </div>
+</header>
+
+<main>
+  <div class="card noPrint">
+    <h3 style="margin-top:0; color:var(--primary); font-size:18px; border-bottom:1px solid var(--border); padding-bottom:10px;">🔍 દસ્તાવેજો શોધો અને ફિલ્ટર કરો</h3>
+    <div class="docs-filters">
+      <div style="display:flex; flex-direction:column; gap:6px; flex:2; min-width:200px;">
+        <label>ફાઇલ નામ શોધો:</label>
+        <input type="text" id="searchBox" placeholder="શોધવા માટે ફાઇલ નામ લખો..." oninput="filterDocuments()">
+      </div>
+      <div style="display:flex; flex-direction:column; gap:6px; flex:1; min-width:150px;">
+        <label>ભાગ ફિલ્ટર:</label>
+        <select id="partFilter" onchange="filterDocuments()">
+          <option value="all">બધા ભાગો</option>
+          <option value="1">ભાગ ૧ — શાળા વ્યવસ્થાપન</option>
+          <option value="2">ભાગ ૨ — શૈક્ષણિક પ્રક્રિયા</option>
+        </select>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:6px; flex:1; min-width:150px;">
+        <label>ફાઇલ પ્રકાર:</label>
+        <select id="typeFilter" onchange="filterDocuments()">
+          <option value="all">તમામ પ્રકારો</option>
+          <option value="pdf">ફક્ત PDFs</option>
+          <option value="image">ફક્ત ઇમેજીસ</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="print-header" id="printHeader"></div>
+    <h2 class="noPrint" style="color:var(--primary); border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-top: 0; display:flex; justify-content:space-between; align-items:center;">
+      <span>📁 અપલોડ કરેલ દસ્તાવેજો લાઈબ્રેરી</span>
+      <span class="small" id="docCount" style="font-weight:normal; color:var(--muted);">કુલ: 0 ફાઇલો</span>
+    </h2>
+
+    <div class="progress noPrint" style="margin-bottom: 15px;"><div id="bar"></div></div>
+    <div class="small noPrint" id="status" style="margin-bottom: 15px; font-weight: bold;"></div>
+
+    <div class="docs-grid" id="docsGrid">
+      <div style="text-align: center; grid-column: 1 / -1; padding: 40px; color: var(--muted);">દસ્તાવેજો લોડ થઈ રહ્યા છે...</div>
+    </div>
+  </div>
+</main>
+
+<!-- Config Scripts -->
+<script src="/js/config.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/navigation.js"></script>
+<script src="/js/pages/documents.js"></script>
+</body>
+</html>

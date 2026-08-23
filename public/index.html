@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ગુણોત્સવ 2.0 આધાર પુરાવા અને અહેવાલ વ્યવસ્થાપન</title>
+<link rel="stylesheet" href="/css/global.css">
+<link rel="stylesheet" href="/css/components.css">
+<link rel="stylesheet" href="/css/pages/dashboard.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+<script>
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+</script>
+</head>
+<body>
+<header class="noPrint">
+  <div class="header-top">
+    <div>
+      <h1>ગુણોત્સવ 2.0 — આધાર પુરાવા અને અહેવાલ વ્યવસ્થાપન</h1>
+      <div class="sub">શાળાના તમામ ૭૪ મુદ્દાઓ માટે વિગતવાર સમીક્ષા અહેવાલ, માહિતી અને ડાયનેમિક કોઠાઓ</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button class="config-btn">⚙️ શાળાની માહિતી બદલો</button>
+    </div>
+  </div>
+  <div class="schoolbar">
+    <span class="pill" id="schoolName"></span>
+    <span class="pill" id="udise"></span>
+    <span class="pill" id="year"></span>
+    <span class="pill" id="location"></span>
+    <span class="pill" id="principal"></span>
+    <span class="autosave-pill" id="autoSaveStatus">⚡ ઓટો સેવ સક્રિય</span>
+  </div>
+</header>
+
+<div class="layout">
+<nav class="noPrint">
+  <div class="nav-content" id="nav"></div>
+  <div class="developer-box">
+    <b>💻 ફાઇલમાં સુધારો કરનાર:</b>
+    પટેલ નિકેતકુમાર અશ્વિનભાઇ<br>
+    પ્રા. શાળા, પિંપરીપાડા<br>
+    તા. કુકરમુંડા, જિ. તાપી<br>
+    મો. 9429462651
+  </div>
+</nav>
+
+<main>
+  <div class="toolbar noPrint">
+    <button class="btn" onclick="saveCurrent()">💾 ફેરફારો સાચવો</button>
+    <button class="btn green" onclick="window.print()">🖨️ રંગીન પ્રિન્ટ / PDF</button>
+    <button class="btn secondary" onclick="copySuggested()">📋 લખાણ કૉપી કરો</button>
+    <button class="btn gray" onclick="clearMyText()">🧹 લખાણ સાફ કરો</button>
+  </div>
+  
+  <div class="card">
+    <div class="print-header" id="printHeader"></div>
+    <div class="tag" id="partTag"></div>
+    <div class="issueTitle" id="issueTitle"></div>
+    
+    <div class="label noPrint">📌 પોર્ટલ પર ચડાવવાનો આધાર / પુરાવો</div>
+    <div class="hint noPrint" id="evidence"></div>
+
+    <div class="label">📝 વિગતવાર સમીક્ષા અહેવાલ અથવા પ્રમાણપત્ર <span class="noPrint" style="font-weight:normal;color:var(--muted);font-size:12px;">(પ્રિન્ટમાં આખું લખાણ દેખાશે)</span></div>
+    <textarea id="myText" placeholder="અહીં વિગતવાર સમીક્ષા અહેવાલ અથવા પ્રમાણપત્ર લખો..."></textarea>
+
+    <div class="label">📊 માહિતી દર્શાવતો કોઠો (કોરા કોષ્ટકો)</div>
+    <div class="table-actions noPrint">
+      <button class="btn secondary" style="padding:6px 12px;font-size:12px;" onclick="addRow()">➕ નવી રો (Row) ઉમેરો</button>
+      <button class="btn gray" style="padding:6px 12px;font-size:12px;" onclick="removeRow()">➖ છેલ્લી રો દૂર કરો</button>
+      <button class="btn secondary" style="padding:6px 12px;font-size:12px;" onclick="addCol()">➕ નવી કોલમ ઉમેરો</button>
+      <button class="btn gray" style="padding:6px 12px;font-size:12px;" onclick="removeCol()">➖ છેલ્લી કોલમ દૂર કરો</button>
+      <button class="btn danger" style="padding:6px 12px;font-size:12px;" onclick="toggleTable()">❌ આ કોઠો દૂર કરો / મૂળ કોઠો પાછો લાવો</button>
+    </div>
+    <div class="table-container" id="tableContainer"></div>
+    
+    <div class="label noPrint">📷 ફોટો અથવા 📄 PDF દસ્તાવેજ અપલોડ કરો (ડાયરેક્ટ ડિસ્પ્લે પર દેખાશે)</div>
+    <input id="files" class="noPrint" type="file" multiple accept="image/*,application/pdf" onchange="handleFileUpload(event)">
+    <div class="media-preview-container noPrint" id="mediaPreviewContainer"></div>
+
+    <div class="progress noPrint"><div id="bar"></div></div>
+    <div class="small noPrint" id="status"></div>
+  </div>
+
+  <div id="fullPagePrintContainer"></div>
+  
+  <div class="footer" id="footerText">પ્રાથમિક શાળા પિંપરીપાડા • ગુણોત્સવ 2.0 • 2026/27</div>
+</main>
+</div>
+
+<!-- Config Scripts -->
+<script src="/js/config.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/navigation.js"></script>
+<script src="/js/pages/dashboard.js"></script>
+</body>
+</html>
